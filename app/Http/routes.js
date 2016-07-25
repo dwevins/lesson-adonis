@@ -28,3 +28,9 @@ Route.get('/visitors', function * (req, res) {
     });
     visitors++;
 });
+
+Route.get('/contact', function * (req, res) {
+  yield res.sendView('contact', {
+
+  })
+});
