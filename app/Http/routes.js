@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,24 @@
 | Route.resource('user', 'UserController')
 */
 
-const Route = use('Route')
+const Route = use('Route');
 
-Route.on('/').render('welcome')
+Route.on('/').render('welcome');
+
+let visitors = 1;
+
+Route.get('/visitors', function * (req, res) {
+  // yield res.sendView();
+  // const data = yield dWork();
+  // cosnt x = yield somethingElse();
+  // ...
+  //
+  console.log(req.url);
+  const html = `
+    <h1>Hi</h1>
+    <p> you asked for url "${req.url()}"</p>
+    <p>visitors: ${visitors}</p>`;
+
+    res.send(html);
+    visitors++;
+});
