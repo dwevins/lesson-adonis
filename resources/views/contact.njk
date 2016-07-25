@@ -1,7 +1,9 @@
 {% extends 'master' %}
 
 {% block content %}
-  <h1>Hi</h1>
-  <p> you asked for url {{url}}</p>
-  <p>visitors: {{visitors}}</p>
+  <form>
+    <input type="text" name='name' placeholder="name">
+    <textarea name="complaint" rows="8" cols="40"></textarea>
+    <button type="submit">submit</button>
+  </form>
 {% endblock %}
