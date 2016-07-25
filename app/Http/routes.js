@@ -22,17 +22,9 @@ Route.on('/').render('welcome');
 let visitors = 1;
 
 Route.get('/visitors', function * (req, res) {
-  // yield res.sendView();
-  // const data = yield dWork();
-  // cosnt x = yield somethingElse();
-  // ...
-  //
-  console.log(req.url);
-  const html = `
-    <h1>Hi</h1>
-    <p> you asked for url "${req.url()}"</p>
-    <p>visitors: ${visitors}</p>`;
-
-    res.send(html);
+    yield res.sendView('visitors', {
+      url: req.url(),
+      visitors
+    });
     visitors++;
 });
