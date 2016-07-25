@@ -1,7 +1,15 @@
 {% extends 'master' %}
 
 {% block content %}
-  <form>
+{% if name %}
+<div class="alert">
+  <h2>hello {{ name }}!</h2>
+  <p>we're sorry to hear about {{complaint }}</p>
+</div>
+
+{% endif %}
+  <form action='/contact' method='post'>
+    {{ csrfField }}
     <input type="text" name='name' placeholder="name">
     <textarea name="complaint" rows="8" cols="40"></textarea>
     <button type="submit">submit</button>
