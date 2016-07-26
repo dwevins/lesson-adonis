@@ -42,5 +42,21 @@ Route.post('/contact', function * (req, res) {
 
   yield req.session.put({ name, complaint });
 
-  res.send({ name, complaint });
+  res.redirect('/contact');
+});
+
+Route.get('/classmates', function * (req, res) {
+  const Database = use('Database');
+  const firstName = req.input('firstName');
+
+  const query = {};
+  if (firstName) {
+    query['first_name'] = firstName;
+  }
+
+
+  const classMates = yield Database.table('classmates').select()
+    .where(query).select();
+
+  res.send(classMates);
 });
